@@ -3,6 +3,7 @@ from aiogram import Bot, Dispatcher, F
 from aiogram.types import Message, KeyboardButton, ReplyKeyboardMarkup
 
 TOKEN = "8668933625:AAGpmq3OKB8S1mJwS7t1Nrt0fEArqucp3MU"
+ADMIN_ID = 8874206770  # BU YERGA O'Z TELEGRAM ID'INGNI QOY
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
@@ -40,7 +41,7 @@ async def catalog(message: Message):
 @dp.message(F.text == "🛒 Заказ бериш")
 async def order(message: Message):
     await message.answer(
-        "Заказ бериш учун шу форматда ёзинг:\n\n"
+        "🛒 Заказ бериш учун шу форматда ёзинг:\n\n"
         "Исми:\n"
         "Телефон:\n"
         "Товар:\n"
@@ -62,8 +63,21 @@ async def delivery(message: Message):
 
 @dp.message()
 async def all_messages(message: Message):
+    user = message.from_user
+
+    username = f"@{user.username}" if user.username else "Username yo'q"
+
+    await bot.send_message(
+        ADMIN_ID,
+        "🆕 Янги заказ!\n\n"
+        f"👤 Клиент: {user.full_name}\n"
+        f"🔗 Username: {username}\n"
+        f"🆔 Telegram ID: {user.id}\n\n"
+        f"📩 Заказ матни:\n{message.text}"
+    )
+
     await message.answer(
-        "✅ Хабарингиз қабул қилинди.\n"
+        "✅ Заказингиз қабул қилинди.\n"
         "Оператор тез орада сиз билан боғланади.",
         reply_markup=menu
     )
