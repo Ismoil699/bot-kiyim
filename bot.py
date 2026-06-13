@@ -51,7 +51,7 @@ async def order(message: Message):
 
 @dp.message(F.text == "📞 Оператор")
 async def operator(message: Message):
-    await message.answer("📞 Оператор: @+998504449994")
+    await message.answer("📞 Оператор: +998504449994")
 
 @dp.message(F.text == "🚚 Доставка")
 async def delivery(message: Message):
