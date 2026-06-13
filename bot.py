@@ -1,4 +1,4 @@
-git add .import asyncio
+import asyncio
 from aiogram import Bot, Dispatcher, F
 from aiogram.types import Message, KeyboardButton, ReplyKeyboardMarkup
 
@@ -9,7 +9,7 @@ dp = Dispatcher()
 
 menu = ReplyKeyboardMarkup(
     keyboard=[
-        [KeyboardButton(text="👔 Каталог"), KeyboardButton(text="🛒 Заказ бериш")],
+        [KeyboardButton(text="🛍 Каталог"), KeyboardButton(text="🛒 Заказ бериш")],
         [KeyboardButton(text="📞 Оператор"), KeyboardButton(text="🚚 Доставка")]
     ],
     resize_keyboard=True
@@ -18,14 +18,19 @@ menu = ReplyKeyboardMarkup(
 @dp.message(F.text == "/start")
 async def start(message: Message):
     await message.answer(
-        "ассаламу алейкум ва рахматуллахи ва баракатух! 👋\n\nSadi Style ботига хуш келибсиз.\n\nБу ерда сиз тез ва ишончли тарзда кийимларга заказ беришингиз мумкин.\n\n✅ Наличида бор маҳсулотлар: 1–3 кун ичида етказиб берилади.\n\n📦 Под заказ маҳсулотлар: 7–10 кун ичида етказиб берилади..",
+        "Ассалому алайкум ва раҳматуллоҳи ва баракатуҳ! 👋\n\n"
+        "Sadi Style ботига хуш келибсиз.\n\n"
+        "Бу ерда сиз тез ва ишончли тарзда кийимларга заказ беришингиз мумкин.\n\n"
+        "✅ Наличида бор маҳсулотлар: 1–3 кун ичида етказиб берилади.\n"
+        "📦 Под заказ маҳсулотлар: 7–10 кун ичида етказиб берилади.\n\n"
+        "Керакли бўлимни танланг 👇",
         reply_markup=menu
     )
 
-@dp.message(F.text == "👔 Каталог")
+@dp.message(F.text == "🛍 Каталог")
 async def catalog(message: Message):
     await message.answer(
-        "👔 Каталог:\n\n"
+        "🛍 Каталог:\n\n"
         "1. Classic Shirt — 250 000 сўм\n"
         "2. Old Money Polo — 300 000 сўм\n"
         "3. Classic Pants — 350 000 сўм\n\n"
@@ -36,26 +41,35 @@ async def catalog(message: Message):
 async def order(message: Message):
     await message.answer(
         "Заказ бериш учун шу форматда ёзинг:\n\n"
-        "Исми: \n"
-        "Телефон: \n"
-        "Товар: \n"
-        "Размер: \n"
-        "Манзил: "
+        "Исми:\n"
+        "Телефон:\n"
+        "Товар:\n"
+        "Размер:\n"
+        "Манзил:"
     )
 
 @dp.message(F.text == "📞 Оператор")
 async def operator(message: Message):
-    await message.answer("Оператор: @username_qoy")
+    await message.answer("📞 Оператор: @username_qoy")
 
 @dp.message(F.text == "🚚 Доставка")
 async def delivery(message: Message):
-    await message.answer("Доставка Тошкент бўйича бор. Нарх манзилга қараб келишилади.")
+    await message.answer(
+        "🚚 Доставка:\n\n"
+        "Тошкент бўйича доставка бор.\n"
+        "Нарх манзилга қараб келишилади."
+    )
 
 @dp.message()
-async def echo(message: Message):
-    await message.answer("Хабарингиз қабул қилинди ✅ Оператор тез орада боғланади.")
+async def all_messages(message: Message):
+    await message.answer(
+        "✅ Хабарингиз қабул қилинди.\n"
+        "Оператор тез орада сиз билан боғланади.",
+        reply_markup=menu
+    )
 
 async def main():
+    print("Bot ishga tushdi...")
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
