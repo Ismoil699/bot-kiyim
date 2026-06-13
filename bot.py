@@ -1,4 +1,4 @@
-import asyncio
+git add .import asyncio
 from aiogram import Bot, Dispatcher, F
 from aiogram.types import Message, KeyboardButton, ReplyKeyboardMarkup
 
@@ -18,7 +18,7 @@ menu = ReplyKeyboardMarkup(
 @dp.message(F.text == "/start")
 async def start(message: Message):
     await message.answer(
-        "Ассалому алайкум! 👋\n\nБизда old money ва classic style кийимлар бор.",
+        "ассаламу алейкум ва рахматуллахи ва баракатух! 👋\n\nSadi Style ботига хуш келибсиз.\n\nБу ерда сиз тез ва ишончли тарзда кийимларга заказ беришингиз мумкин.\n\n✅ Наличида бор маҳсулотлар: 1–3 кун ичида етказиб берилади.\n\n📦 Под заказ маҳсулотлар: 7–10 кун ичида етказиб берилади..",
         reply_markup=menu
     )
 
