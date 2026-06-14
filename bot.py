@@ -1,6 +1,6 @@
 import asyncio
 from aiogram import Bot, Dispatcher, F
-from aiogram.types import Message, KeyboardButton, ReplyKeyboardMarkup
+from aiogram.types import Message, KeyboardButton, ReplyKeyboardMarkup, FSInputFile
 
 TOKEN = "8668933625:AAGpmq3OKB8S1mJwS7t1Nrt0fEArqucp3MU"
 ADMIN_ID = 8874206770  # BU YERGA O'Z TELEGRAM ID'INGNI QOY
@@ -28,16 +28,25 @@ async def start(message: Message):
         reply_markup=menu
     )
 
-@dp.message(F.text == "🛍 Каталог")
+@dp.message(F.text == "🛍Каталог")
 async def catalog(message: Message):
-    await message.answer(
-        "🛍 Каталог:\n\n"
-        "1. Classic Shirt — 250 000 сўм\n"
-        "2. Old Money Polo — 300 000 сўм\n"
-        "3. Classic Pants — 350 000 сўм\n\n"
-        "Заказ бериш учун: 🛒 Заказ бериш"
-    )
+    media = [
+        FSInputFile("2026-06-14 2.43.55 PM.jpg"),
+        FSInputFile("2026-06-14 2.43.59 PM.jpg"),
+        FSInputFile("2026-06-14 2.44.03 PM.jpg")
+    ]
 
+    captions = [
+        "👟 Oq Krossovka\n💰 450 000 so'm",
+        "🤍 Oq Ko'ylak (Hoodie)\n💰 280 000 so'm",
+        "🤍 Oq Ko'ylak va Shorti\n💰 350 000 so'm"
+    ]
+
+    for i in range(len(media)):
+        await message.answer_photo(
+            photo=media[i],
+            caption=captions[i]
+        )
 @dp.message(F.text == "🛒 Заказ бериш")
 async def order(message: Message):
     await message.answer(
