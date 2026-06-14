@@ -39,11 +39,13 @@ async def catalog(message: Message):
         FSInputFile("lion.jpg")
     ]
 
-    captions = [
-        "🤍 Копишонкали лион ветровка\n💰 280 000 so'm",
-        "🤍 кросс\n💰 450 000 so'm",
-        "🤍 лион двойка\n💰 350 000 so'm
-        "🤍 Лион шим\n💰 250 000 so'm"
+captions = [
+    "🤍 Kofta\n💰 280 000 so'm",
+    "🤍 Krossovka\n💰 450 000 so'm",
+    "🤍 Lion двойка\n💰 350 000 so'm",
+    "🤍 Lion Shim\n💰 250 000 so'm"
+]
+
     ]
 
     for i in range(len(media)):
