@@ -45,9 +45,6 @@ captions = [
     "🤍 Lion двойка\n💰 350 000 so'm",
     "🤍 Lion Shim\n💰 250 000 so'm"
 ]
-
-    ]
-
     for i in range(len(media)):
         await message.answer_photo(
             photo=media[i],
