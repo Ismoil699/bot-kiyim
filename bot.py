@@ -10,7 +10,7 @@ dp = Dispatcher()
 
 menu = ReplyKeyboardMarkup(
     keyboard=[
-        [KeyboardButton(text="🛍 Каталог"), KeyboardButton(text="🛒 Заказ бериш")],
+        [KeyboardButton(text="🛍  Каталог"), KeyboardButton(text="🛒 Заказ бериш")],
         [KeyboardButton(text="📞 Оператор"), KeyboardButton(text="🚚 Доставка")]
     ],
     resize_keyboard=True
@@ -27,7 +27,7 @@ async def start(message: Message):
         "Керакли бўлимни танланг 👇",
         reply_markup=menu
     )
-@dp.message(F.text == "🛍 Каталог")
+@dp.message(F.text == "🛍  Каталог")
 async def catalog(message: Message):
     media = [
         FSInputFile("2026-06-14 2.43.55 PM.jpg"),
@@ -71,9 +71,8 @@ async def delivery(message: Message):
 
 @dp.message()
 async def all_messages(message: Message):
-    if message.text in ["🛍 Каталог", "🛒 Заказ бериш", "📞 Оператор", "🚚 Доставка", "/start"]:
+if message.text in ["🛍  Каталог", "🛒 Заказ бериш", "📞 Оператор", "🚚 Доставка", "/start"]:
         return
-
     user = message.from_userн
     username = f"@{user.username}" if user.username else "Username yo'q"
 
