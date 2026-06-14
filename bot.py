@@ -27,8 +27,7 @@ async def start(message: Message):
         "Керакли бўлимни танланг 👇",
         reply_markup=menu
     )
-
-@dp.message(F.text == "🛍Каталог")
+@dp.message(F.text == "🛍 Каталог")
 async def catalog(message: Message):
     media = [
         FSInputFile("2026-06-14 2.43.55 PM.jpg"),
