@@ -71,7 +71,7 @@ async def delivery(message: Message):
 
 @dp.message()
 async def all_messages(message: Message):
-if message.text in ["🛍  Каталог", "🛒 Заказ бериш", "📞 Оператор", "🚚 Доставка", "/start"]:
+    if message.text in ["🛍 Каталог", "🛒 Заказ бериш", "📞 Оператор", "🚚 Доставка", "/start"]:
         return
     user = message.from_userн
     username = f"@{user.username}" if user.username else "Username yo'q"
