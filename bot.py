@@ -2,32 +2,35 @@ import asyncio
 from aiogram import Bot, Dispatcher, F
 from aiogram.types import Message, KeyboardButton, ReplyKeyboardMarkup, FSInputFile
 
-TOKEN = "8668933625:AAGpmq3OKB8S1mJwS7t1Nrt0fEArqucp3MU"
-ADMIN_ID = 8874206770  # BU YERGA O'Z TELEGRAM ID'INGNI QOY
+TOKEN = "BOT_TOKEN"
+ADMIN_ID = 8874206770
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
 menu = ReplyKeyboardMarkup(
     keyboard=[
-        [KeyboardButton(text="🛍  Каталог"), KeyboardButton(text="🛒 Заказ бериш")],
+        [KeyboardButton(text="🛍 Каталог"), KeyboardButton(text="🛒 Заказ бериш")],
         [KeyboardButton(text="📞 Оператор"), KeyboardButton(text="🚚 Доставка")]
     ],
     resize_keyboard=True
 )
 
+
 @dp.message(F.text == "/start")
 async def start(message: Message):
     await message.answer(
-        "Ассалому алайкум ва раҳматуллоҳи ва баракатуҳ! 👋\n\n"
-        "Sadi Style ботига хуш келибсиз.\n\n"
+        "Ассалому алайкум ва раҳматуллоҳи ва баракатух! 👋\n\n"
+        "Sadi Style бутига хуш келибсиз.\n\n"
         "Бу ерда сиз тез ва ишончли тарзда кийимларга заказ беришингиз мумкин.\n\n"
         "✅ Наличида бор маҳсулотлар: 1–3 кун ичида етказиб берилади.\n"
         "📦 Под заказ маҳсулотлар: 7–10 кун ичида етказиб берилади.\n\n"
         "Керакли бўлимни танланг 👇",
         reply_markup=menu
     )
-@dp.message(F.text == "🛍  Каталог")
+
+
+@dp.message(F.text == "🛍 Каталог")
 async def catalog(message: Message):
     media = [
         FSInputFile("2026-06-14 2.43.55 PM.jpg"),
@@ -36,9 +39,9 @@ async def catalog(message: Message):
     ]
 
     captions = [
-        "👟 Oq Krossovka\n💰 450 000 so'm",
-        "🤍 Oq Ko'ylak (Hoodie)\n💰 280 000 so'm",
-        "🤍 Oq Ko'ylak va Shorti\n💰 350 000 so'm"
+        "🤍 Oq Krossovkan 👟 450 000 so'm",
+        "🤍 Oq Ko'ylak (Hoodie) 280 000 so'm",
+        "🤍 Oq Ko'ylak va Shorti 350 000 so'm"
     ]
 
     for i in range(len(media)):
@@ -46,6 +49,8 @@ async def catalog(message: Message):
             photo=media[i],
             caption=captions[i]
         )
+
+
 @dp.message(F.text == "🛒 Заказ бериш")
 async def order(message: Message):
     await message.answer(
@@ -57,9 +62,11 @@ async def order(message: Message):
         "Манзил:"
     )
 
+
 @dp.message(F.text == "📞 Оператор")
 async def operator(message: Message):
     await message.answer("📞 Оператор: +998504449994")
+
 
 @dp.message(F.text == "🚚 Доставка")
 async def delivery(message: Message):
@@ -69,9 +76,10 @@ async def delivery(message: Message):
         "Нарх манзилга қараб келишилади."
     )
 
+
 @dp.message(F.text)
 async def all_messages(message: Message):
-    if message.text in ["🛍  Каталог", "🛒 Заказ бериш", "📞 Оператор", "🚚 Доставка", "/start"]:
+    if message.text in ["🛍 Каталог", "🛒 Заказ бериш", "📞 Оператор", "🚚 Доставка", "/start"]:
         return
 
     user = message.from_user
@@ -91,9 +99,12 @@ async def all_messages(message: Message):
         "Оператор тез орада сиз билан боғланади.",
         reply_markup=menu
     )
+
+
 async def main():
     print("Bot ishga tushdi...")
     await dp.start_polling(bot)
+
 
 if __name__ == "__main__":
     asyncio.run(main())
