@@ -2,7 +2,7 @@ import asyncio
 from aiogram import Bot, Dispatcher, F
 from aiogram.types import Message, KeyboardButton, ReplyKeyboardMarkup, FSInputFile
 
-TOKEN = "BOT_TOKEN"
+TOKEN = "8668933625:AAGpmq3OKB8S1mJwS7t1Nrt0fEArqucp3MU"
 ADMIN_ID = 8874206770
 
 bot = Bot(token=TOKEN)
@@ -10,7 +10,7 @@ dp = Dispatcher()
 
 menu = ReplyKeyboardMarkup(
     keyboard=[
-        [KeyboardButton(text="🛍 Каталог"), KeyboardButton(text="🛒 Заказ бериш")],
+        [KeyboardButton(text="🛍  Каталог"), KeyboardButton(text="🛒 Заказ бериш")],
         [KeyboardButton(text="📞 Оператор"), KeyboardButton(text="🚚 Доставка")]
     ],
     resize_keyboard=True
@@ -30,7 +30,7 @@ async def start(message: Message):
     )
 
 
-@dp.message(F.text == "🛍 Каталог")
+@dp.message(F.text == "🛍  Каталог")
 async def catalog(message: Message):
     media = [
         FSInputFile("2026-06-14 2.43.55 PM.jpg"),
@@ -79,7 +79,7 @@ async def delivery(message: Message):
 
 @dp.message(F.text)
 async def all_messages(message: Message):
-    if message.text in ["🛍 Каталог", "🛒 Заказ бериш", "📞 Оператор", "🚚 Доставка", "/start"]:
+    if message.text in ["🛍  Каталог", "🛒 Заказ бериш", "📞 Оператор", "🚚 Доставка", "/start"]:
         return
 
     user = message.from_user
