@@ -73,7 +73,7 @@ async def delivery(message: Message):
 async def all_messages(message: Message):
     if message.text in ["🛍 Каталог", "🛒 Заказ бериш", "📞 Оператор", "🚚 Доставка", "/start"]:
         return
-    user = message.from_userн
+    user = message.from_user
     username = f"@{user.username}" if user.username else "Username yo'q"
 
     await bot.send_message(
