@@ -2,10 +2,11 @@ import asyncio
 from aiogram import Bot, Dispatcher, F
 from aiogram.types import Message, KeyboardButton, ReplyKeyboardMarkup, FSInputFile
 
-TOKEN = "8668933625:AAGpmq3OKB8S1mJwS7t1Nrt0fEArqucp3MU"
-ADMIN_ID = 8874206770
+import os
 
+TOKEN = os.getenv("BOT_TOKEN")
 bot = Bot(token=TOKEN)
+ADMIN_ID = 8874206770
 dp = Dispatcher()
 
 menu = ReplyKeyboardMarkup(
