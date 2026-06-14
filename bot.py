@@ -35,8 +35,8 @@ async def catalog(message: Message):
     media = [
         FSInputFile("shoes.jpg"),
         FSInputFile("hoodie.jpg"),
-        FSInputFile("shorts.jpg")
-        FSInputFile("lion.jpg")
+        FSInputFile("shorts.jpg"),
+        FSInputFile("lion.jpg"),
     ]
 
 captions = [
