@@ -69,20 +69,21 @@ async def delivery(message: Message):
         "Нарх манзилга қараб келишилади."
     )
 
-@dp.message()
+@dp.message(F.text)
 async def all_messages(message: Message):
-    if message.text in ["🛍 Каталог", "🛒 Заказ бериш", "📞 Оператор", "🚚 Доставка", "/start"]:
+    if message.text in ["🛍  Каталог", "🛒 Заказ бериш", "📞 Оператор", "🚚 Доставка", "/start"]:
         return
+
     user = message.from_user
     username = f"@{user.username}" if user.username else "Username yo'q"
 
     await bot.send_message(
         ADMIN_ID,
-        "🆕 Янги заказ!\n\n"
+        f"🆕 Янги заказ!\n\n"
         f"👤 Клиент: {user.full_name}\n"
         f"🔗 Username: {username}\n"
         f"🆔 Telegram ID: {user.id}\n\n"
-        f"📩 Заказ матни:\n{message.text}"
+        f"✉️ Заказ матни:\n{message.text}"
     )
 
     await message.answer(
@@ -90,7 +91,6 @@ async def all_messages(message: Message):
         "Оператор тез орада сиз билан боғланади.",
         reply_markup=menu
     )
-
 async def main():
     print("Bot ishga tushdi...")
     await dp.start_polling(bot)
