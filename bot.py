@@ -31,13 +31,14 @@ async def start(message: Message):
     )
 
 
-@dp.message(F.text == "🛍  Каталог")
+@dp.message(F.text == "🛍 Каталог")
 async def catalog(message: Message):
-media = [
-    FSInputFile("shoes.jpg"),
-    FSInputFile("hoodie.jpg"),
-    FSInputFile("shorts.jpg")
-]
+    media = [
+        FSInputFile("shoes.jpg"),
+        FSInputFile("hoodie.jpg"),
+        FSInputFile("shorts.jpg")
+    ]
+
     captions = [
         "🤍 Oq Krossovkan 👟 450 000 so'm",
         "🤍 Oq Ko'ylak (Hoodie) 280 000 so'm",
@@ -49,7 +50,6 @@ media = [
             photo=media[i],
             caption=captions[i]
         )
-
 
 @dp.message(F.text == "🛒 Заказ бериш")
 async def order(message: Message):
